@@ -14,18 +14,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
+    - name: Add current timestamp as variable
+      run: |
+        echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
+    - name: Login to Docker Hub
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
     - name: Build the Base Docker image
       run: docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:$TIMESTAMP && docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:latest
-      - name: Build the Java 17 Docker image
+    - name: Build the Java 17 Docker image
       run: docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-$TIMESTAMP && docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-latest
-      - name: Build the Python 3 Docker image
+    - name: Build the Python 3 Docker image
       run: docker build . --file Python3.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:python3-$TIMESTAMP && docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:python3-latest
     - name: Docker push images
       run: docker push --all-tags ${{secrets.DOCKER_USER}}/runstart
