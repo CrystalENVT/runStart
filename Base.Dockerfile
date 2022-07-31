@@ -5,6 +5,8 @@ FROM debian:stable-slim
 
 WORKDIR /runstart
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # helper tools
 RUN apt-get -y update
 # --no-install-recommends needs to be removed from the atool install,
