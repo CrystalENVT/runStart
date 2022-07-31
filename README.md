@@ -15,8 +15,11 @@
   </tr>
 </table>
 
+## Docker Hub Page
+https://hub.docker.com/r/snreloaded/runstart
+
 ## Example `docker run` Command:
-`docker run -d -it --name <image_name> -v /local/path/to/dir:/mnt --env SRC_ARCHIVE_URL="remote_archive_to_download" --env OTHER_VAR="Optional_Additional_Values_You_Wish_To_Map" runstart:latest`
+`docker run -d -it --name <image_name> -v /local/path/to/dir:/mnt --env SRC_ARCHIVE_URL="remote_archive_to_download" --env OTHER_VAR="Optional_Additional_Values_You_Wish_To_Map" snreloaded/runstart:latest`
 
 ## Potential questions:
 
@@ -25,4 +28,4 @@
 2) <b>Q:</b> Why the "Temurin" JDK instead of some other JDK source?  
    <b>A:</b> Previously the "Temurin" JDK was the "AdoptOpenJDK" project, which was then acquired by Eclipse & the project name was changed. Still the same core essence, just under a different group, hence why I use this still.
 3) <b>Q:</b> This project seems cool! How do I use it for myself?  
-   <b>A:</b> Unfortunately for now, while I figure out how this Docker registry stuff works, you will need to clone & this image locally by yourself. Readme will be updated once you can pull from a registry :)
+   <b>A:</b> There are various different container orchestration tools, such as Portainer & Rancher, that this should work with, but the simplest docker run command can be seen documented [above](#example-docker-run-command) (tagging the latest build). If you want to tag a specific version, refer to the [docker hub page](#docker-hub-page) for all the tagged versions.
