@@ -19,9 +19,11 @@
 https://hub.docker.com/r/snreloaded/runstart
 
 ## RunStart types
+```
 latest         : base image. Manual install for any additional requirements beyond basic shell usage
 python3-latest : python3 & pip pre-installed beyond the base image
 java17-latest  : java17 pre-installed beyond the base image
+```
 
 ## Example `docker run` Command:
 `docker run -d -it --name <image_name> -v /local/path/to/dir:/mnt --env SRC_ARCHIVE_URL="remote_archive_to_download" --env OTHER_VAR="Optional_Additional_Values_You_Wish_To_Map" snreloaded/runstart:latest`
