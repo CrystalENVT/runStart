@@ -1,11 +1,9 @@
-FROM debian:stable-slim
+FROM ubuntu:latest
 
 # [optional] variable SRC_ARCHIVE_URL -> archive to download in container for running
 # [optional] volume mounting for persistance -> /local/path/to/dir:/mnt
 
 WORKDIR /runstart
-
-ENV DEBIAN_FRONTEND=noninteractive
 
 # helper tools
 RUN apt-get -y update
