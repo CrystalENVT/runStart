@@ -14,7 +14,9 @@ if [[ ! -z $SRC_ARCHIVE_URL ]]; then
 
         echo "\"start.sh\" found on mounted volume"
         chmod +x /mnt/start.sh
-        cp /mnt/start.sh /runstart/
+        if [ ! -L /runstart/start.sh ] && [ ! -e /runstart/start.sh ]; then
+            ls -s /mnt/start.sh /runstart/start.sh
+        fi
 
     # check the unpacked files for a singular setup.sh file
     elif [[ $(find . -name start.sh | wc -l) -eq 1 ]]; then
@@ -41,8 +43,10 @@ elif [[ ! -z $(ls /mnt) ]]; then
 
         echo "Using files from mounted volume"
         START_FILE=$(find /mnt -name start.sh)
-        chmod +x /mnt$START_FILE
-        ln -s /mnt/* /runstart/
+        chmod +x $START_FILE
+        if [ ! -L /runstart/start.sh ] && [ ! -e /runstart/start.sh ]; then
+            ln -s /mnt/* /runstart/
+        fi
 
     else
 
