@@ -30,7 +30,5 @@ java17-latest  : java17 pre-installed beyond the base image
 
 ## Potential questions:
 
-1) <b>Q:</b> Why all the "bloat" of including both Java & Python3 in this image? I could make a way slimmer image by making something purpose built.  
-   <b>A:</b> Perfect! Go build that slimmed down image :) This is meant to be a general image that I could just throw my existing projects into without much thought. I could definitely slim this down if I was building purpose made containers, but this image is meant as the brute force / general solution.
-2) <b>Q:</b> This project seems cool! How do I use it for myself?  
+1) <b>Q:</b> This project seems cool! How do I use it for myself?  
    <b>A:</b> There are various different container orchestration tools, such as Portainer & Rancher, that this should work with, but the simplest docker run command can be seen documented [above](#example-docker-run-command) (tagging the latest build). If you want to tag a specific version, refer to the [docker hub page](#docker-hub-page) for all the tagged versions.
