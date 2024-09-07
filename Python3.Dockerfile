@@ -1,4 +1,4 @@
-FROM snreloaded/runstart:base-${TIMESTAMP}
+FROM snreloaded/runstart:base-REPLACEME
 
 # install several "runner" tools
 RUN apt-get -y --no-install-recommends install python3-pip=24.0+dfsg-1ubuntu1
