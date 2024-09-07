@@ -24,10 +24,14 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Base Docker image
-      run: docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:base-$TIMESTAMP && docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:latest
+      run: |
+        sed -i "s/REPLACEME/${TIMESTAMP}/g" Java17.Dockerfile
+        docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:base-$TIMESTAMP && docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:latest
     - name: Build the Java 17 Docker image
-      run: docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-$TIMESTAMP && docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-latest --build-arg TIMESTAMP=${TIMESTAMP}
+      run: docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-$TIMESTAMP && docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-latest
     - name: Build the Python 3 Docker image
-      run: docker build . --file Python3.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:python3-$TIMESTAMP && docker build . --file Python3.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:python3-latest --build-arg TIMESTAMP=${TIMESTAMP}
+      run: |
+        sed -i "s/REPLACEME/${TIMESTAMP}/g" Python3.Dockerfile
+        docker build . --file Python3.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:python3-$TIMESTAMP && docker build . --file Python3.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:python3-latest
     - name: Docker push images
       run: docker push --all-tags ${{secrets.DOCKER_USER}}/runstart
