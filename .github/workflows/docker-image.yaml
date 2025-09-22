@@ -27,10 +27,15 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Base Docker image
       run: |
-        sed -i "s/REPLACEME/${TIMESTAMP}/g" Java17.Dockerfile
         docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:base-$TIMESTAMP && docker build . --file Base.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:latest
     - name: Build the Java 17 Docker image
-      run: docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-$TIMESTAMP && docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-latest
+      run: |
+        sed -i "s/REPLACEME/${TIMESTAMP}/g" Java17.Dockerfile
+        docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-$TIMESTAMP && docker build . --file Java17.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java17-latest
+    - name: Build the Java 8 Docker image
+      run: |
+        sed -i "s/REPLACEME/${TIMESTAMP}/g" Java8.Dockerfile
+        docker build . --file Java8.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java8-$TIMESTAMP && docker build . --file Java8.Dockerfile --tag ${{secrets.DOCKER_USER}}/runstart:java8-latest
     - name: Build the Python 3 Docker image
       run: |
         sed -i "s/REPLACEME/${TIMESTAMP}/g" Python3.Dockerfile
