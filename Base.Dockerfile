@@ -11,6 +11,8 @@ RUN apt-get -y update
 #   otherwise the various archive formats are not included
 #   recommends list: https://packages.ubuntu.com/jammy/atool
 RUN apt-get -y install atool
+# Handle changing users
+RUN apt-get -y install gosu
 RUN apt-get -y --no-install-recommends install grep
 # --no-install-recommends needs to be removed from the wget install,
 #   otherwise the adoptium key can't get downloaded.
