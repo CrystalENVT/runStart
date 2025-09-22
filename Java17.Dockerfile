@@ -1,3 +1,3 @@
-FROM CrystalENVT/runstart:base-REPLACEME
+FROM crystalenvt/runstart:base-REPLACEME
 
 RUN apt-get -y --no-install-recommends install openjdk-17-jdk

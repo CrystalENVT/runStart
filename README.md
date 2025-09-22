@@ -16,7 +16,7 @@
 </table>
 
 ## Docker Hub Page
-Current: https://hub.docker.com/r/CrystalENVT/runstart
+Current: https://hub.docker.com/r/crystalenvt/runstart
 Deprecated: https://hub.docker.com/r/snreloaded/runstart
 
 ## RunStart types
@@ -28,7 +28,7 @@ java8-latest   : java8 pre-installed beyond the base image
 ```
 
 ## Example `docker run` Command:
-`docker run -d -it --name <image_name> -v /local/path/to/dir:/mnt --env SRC_ARCHIVE_URL="remote_archive_to_download" --env OTHER_VAR="Optional_Additional_Values_You_Wish_To_Map" CrystalENVT/runstart:latest`
+`docker run -d -it --name <image_name> -v /local/path/to/dir:/mnt --env SRC_ARCHIVE_URL="remote_archive_to_download" --env OTHER_VAR="Optional_Additional_Values_You_Wish_To_Map" crystalenvt/runstart:latest`
 
 ## Potential questions:
 
