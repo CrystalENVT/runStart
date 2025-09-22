@@ -1,5 +1,3 @@
-FROM snreloaded/runstart:base-REPLACEME
+FROM CrystalENVT/runstart:base-REPLACEME
 
-ENV JAVA_VERSION="17.0.12+7-1ubuntu2~24.04"
-
-RUN apt-get -y --no-install-recommends install openjdk-17-jdk=${JAVA_VERSION}
+RUN apt-get -y --no-install-recommends install openjdk-17-jdk
