@@ -1,4 +1,4 @@
-FROM CrystalENVT/runstart:base-REPLACEME
+FROM crystalenvt/runstart:base-REPLACEME
 
 # install several "runner" tools
 RUN apt-get -y --no-install-recommends install python3-pip
