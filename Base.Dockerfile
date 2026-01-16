@@ -1,4 +1,4 @@
-FROM ubuntu:noble-20250910
+FROM ubuntu:noble-20260113
 
 # [optional] variable SRC_ARCHIVE_URL -> archive to download in container for running
 # [optional] volume mounting for persistance -> /local/path/to/dir:/mnt
